@@ -15,13 +15,37 @@ The **BLE Attendance System** project aims to automatically update attendance us
 - **MySQL Database** - Local database for storing Bluetooth addresses.
 - **Python** - For processing BLE data and updating attendance in the database.
 
-## On my personal PC and using a wearable bluetooth smartwatch as the bt device for capturing attendance
+# Project Title
+
+## Project Overview
+The project aims to automatically update attendance using BLE technology. Currently, it is my first prototype. Here I am using an ESP32 that acts as the BLE beacon scanning devices. I have noted down the Bluetooth address of my device (smartwatch) and put it in my local database. The scans are sent to the Python code that compares the scanned addresses to the Bluetooth address stored and updates the status. 
+
+After running the ESP32 code in the Arduino IDE and uploading it to the device, it should be closed, and then the Python code should be run to check the SQL database to verify the attendance.
+
+## Attendance Tracking Example
+
+On my personal PC and using a wearable Bluetooth smartwatch as the Bluetooth device for capturing attendance, the process works as follows:
+
+1. **Attendance Not Marked**: 
+   - ABC's smartwatch's Bluetooth address is stored in the attendance database. 
+   - As the person ABC is not in the range of the ESP32, his attendance remains marked as absent.
+
+2. **Program Output**:
+   - The program scans the Bluetooth devices, and upon finding a match for ABC's device as he enters the range (meaning the class), his attendance is marked in the database.
+
 ---
-![attendance not marked](before_automation.png)
-ABC's smartwatch's bluetooth address is stored in the attendance and as the person ABC wearing the smartwatch is not in the range of the esp32 that can be considered as his class. so his attendance remains absent. 
+
+![Attendance Not Marked](before_automation.png)
+ *ABC's attendance is not marked as he is out of range.*
+
 ---
-![program output](program_output.png)
-The program scans the bluetooth devices and upon finding the match of ABC's device as ABC enters the range meaning the class his attendance is marked in the database.
+
+![Scanning Devices](program_output.png)
+ *The program scans for Bluetooth devices in the vicinity.*
+
 ---
-![attendance marked](after automation.png)
-ABC's attendance status has been changed from absent to present by the automation program.
+
+![Attendance Marked](attendance_marked.png)
+ *ABC's attendance status has been changed from absent to present by the automation program.*
+
+---
